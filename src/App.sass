@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200')
+.App 
+  text-align: center
+  font-family: 'Poppins', sans-serif
+  height: 100vh
+  width: 100%
+.contenedorDeCards 
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: center
+  height: 100vh
+  width: auto
+
+.cardInfo
+  width: 220px
+  height: 500px
+  border-radius: 10px
+  margin-left: 5px
+  margin-right: 5px
+
+  .cardButton
+    background-color: transparent
+    color: green
+    border: none
+    cursor: pointer
+  .cardBody
+    >p
+      line-height: 120%
+      margin-bottom: 0px
+      margin-top: 0px
+    >img
+      height: 150px
+      width: auto
+      object-fit: contain
+      margin-top: 20px
+.fondoDeEspacio
+  height: 100vh
+  width: 100wv
+  background-image: url('./assets/Fondo.png')
+  object-fit: contain
+  .contenedorRow
+    height: 100%
+    width: auto
+    margin: 0px 100px 20px 100px
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    .rickYmorty
+      width: 50%
+      height: auto
+      display: flex
+      justify-content: center
+      align-items: center
+      >img
+        width: 100%
+        user-select: none
+        transition: 2s
+        animation: flotando 8s ease-in-out infinite
+
+    .contenidoCol
+      margin-left: 20px
+      width: 50%
+      height: auto
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      text-align: center
+      .logo
+        >img
+          width: 94%
+          user-select: none
+          -webkit-animation: text-flicker-in-glow 5s linear both
+          animation: text-flicker-in-glow 4s linear both
+      .texto
+        margin-bottom: 60px
+        margin-top: -20px
+        color: #ffffff
+        font-family: 'ponteRicoso'
+        letter-spacing: 2px
+        font-weight: 400
+      .sesion
+        display: flex
+        flex-direction: column
+        width: 40%
+        margin: auto
+        >label
+          color: #fff
+          text-align: start
+          margin-bottom: -10px
+          margin-left: 5px
+          background-color: #000C16
+          display: inline-block
+          z-index: 2
+          &.mail
+            width: 54px
+          &.password
+            width: 88px
+        >p
+          color: red
+          font-size: 14px
+          
+        >input
+          height: 35px
+          border: 2px solid #00FD56
+          border-radius: 40px
+          background-color: transparent
+          color: #fff
+          text-align: center
+          &:focus
+            border: 2px solid #00FD56
+          
+
+            
+.fondoDeEspacioRelative
+  position: relative
+  height: 100vh
+  width: 100wv
+  background-image: url('./assets/Fondo.png')
+  object-fit: contain
+  overflow: hidden
+  .RickPhoto
+    position: absolute
+    bottom: -10px
+    left: -10px
+    width: 22%
+    user-select: none
+    animation: flotando 10s ease-in infinite
+  .MortyFlotando
+    position: absolute
+    top: 15%
+    right: 40%
+    width: 20%
+    user-select: none
+    animation: perdido 30s ease-in-out infinite
+    backface-visibility: hidden
+  .regresar
+    position: absolute
+    bottom: 0px
+    right: 0px
+    width: 430px
+    height: 200px
+    margin-right: 75px
+    margin-bottom: 60px
+    background-color: transparent
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    .ubicacion
+      width: 70%
+      text-align: end
+      margin-right: 20px
+      >h1
+        user-select: none
+        font-family: 'ponteRicoso'
+        color: #00FD56
+        font-size: 45px
+        letter-spacing: 2px
+        line-height: 100%
+        margin: 10px
+      >span
+        color: white
+        user-select: none
+        font-display: 'Ubuntu'
+        text-align: end
+        font-size: 18px
+        margin-right: 10px
+    .portal
+      width: 30%
+      cursor: pointer
+      background-color: transparent
+      animation: portal-anim 6s linear infinite
+.primary-button
+  width: 90px
+  height: 100px
+  border-radius: 100px
+  border: 4px solid #00FD56
+  background-color: transparent
+  background-image: url('./assets/identificador.png')
+  background-size: 60px
+  background-repeat: no-repeat
+  background-position: center
+  background-origin: content-box
+  align-items: center
+  color: #ffffff
+  filter: drop-shadow(0 0 0.2rem #00FD56)
+  font-family: 'ponteRicoso'
+  font-size: 26px
+  transition: 2s
+  cursor: pointer
+  margin-top: 15px
+  &:hover
+    transform: scale(1.1)
+    filter: drop-shadow(0 0 0.95rem #00FD56)
+
+
+@keyframes portal-anim 
+  0% 
+    transform: rotate(0deg)
+  
+  100% 
+    transform: rotate(360deg)
+
+@keyframes flotando
+    0%   
+      transform: translateY(0px) 
+    25%  
+      transform: translateY(10px) 
+    50%  
+      transform: translateY(5px)
+    75% 
+      transform: translateY(10px) 
+    90% 
+      transform: translateY(5px) 
+    100% 
+      transform: translateY(0px) 
+
+@keyframes perdido
+  0%
+    transform: translate(0px, 0px) rotate(0deg)
+  10%
+    transform: translate(10px, 5px) rotate(10deg)
+  25% 
+    transform: translate(40px, 2px) rotate(20deg)
+  
+  50% 
+    transform: translate(60px, -5px) rotate(0deg)
+
+  75%
+    transform: translate(40px, 2px) rotate(20deg)
+  90%
+    transform: translate(10px, 5px) rotate(10deg)
+
+  100% 
+    transform: translate(0px, 0px) rotate(0deg)
+  
+
+@keyframes shake 
+    0%   
+      transform: translate(1px, 1px) rotate(0deg)
+    10%  
+      transform: translate(-1px, -2px) rotate(-1deg)
+    20%  
+      transform: translate(-3px, 0px) rotate(1deg)
+    30%  
+      transform: translate(3px, 2px) rotate(0deg)
+    40%  
+      transform: translate(1px, -1px) rotate(1deg)
+    50%  
+      transform: translate(-1px, 2px) rotate(-1deg)
+    60%  
+      transform: translate(-3px, 1px) rotate(0deg)
+    70%  
+      transform: translate(3px, 1px) rotate(-1deg)
+    80%  
+      transform: translate(-1px, -1px) rotate(1deg)
+    90%  
+      transform: translate(1px, 2px) rotate(0deg)
+    100% 
+      transform: translate(1px, -2px) rotate(-1deg)
+@-webkit-keyframes text-flicker-in-glow 
+  0% 
+    opacity: 0
+  
+  10% 
+    opacity: 0
+    text-shadow: none
+  
+  10.1% 
+    opacity: 1
+    text-shadow: none
+  
+  10.2% 
+    opacity: 0
+    text-shadow: none
+  
+  20% 
+    opacity: 0
+    text-shadow: none
+  
+  20.1% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.25)
+  
+  20.6% 
+    opacity: 0
+    text-shadow: none
+  
+  30% 
+    opacity: 0
+    text-shadow: none
+  
+  30.1% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25)
+  
+  30.5% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25)
+  
+  30.6% 
+    opacity: 0
+    text-shadow: none
+  
+  45% 
+    opacity: 0
+    text-shadow: none
+  
+  45.1% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25)
+  
+  50% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25)
+  
+  55% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25)
+  
+  55.1% 
+    opacity: 0
+    text-shadow: none
+  
+  57% 
+    opacity: 0
+    text-shadow: none
+  
+  57.1% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35)
+  
+  60% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35)
+  
+  60.1% 
+    opacity: 0
+    text-shadow: none
+  
+  65% 
+    opacity: 0
+    text-shadow: none
+  
+  65.1% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35), 0 0 100px rgba(255, 255, 255, 0.1)
+  
+  75% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35), 0 0 100px rgba(255, 255, 255, 0.1)
+  
+  75.1% 
+    opacity: 0
+    text-shadow: none
+  
+  77% 
+    opacity: 0
+    text-shadow: none
+  
+  77.1% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.4), 0 0 110px rgba(255, 255, 255, 0.2), 0 0 100px rgba(255, 255, 255, 0.1)
+  
+  85% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.4), 0 0 110px rgba(255, 255, 255, 0.2), 0 0 100px rgba(255, 255, 255, 0.1)
+  
+  85.1% 
+    opacity: 0
+    text-shadow: none
+  
+  86% 
+    opacity: 0
+    text-shadow: none
+  
+  86.1% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.45), 0 0 110px rgba(255, 255, 255, 0.25), 0 0 100px rgba(255, 255, 255, 0.1)
+  
+  100% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.45), 0 0 110px rgba(255, 255, 255, 0.25), 0 0 100px rgba(255, 255, 255, 0.1)
+  
+
+@keyframes text-flicker-in-glow 
+  0% 
+    opacity: 0
+  
+  10% 
+    opacity: 0
+    text-shadow: none
+  
+  10.1% 
+    opacity: 1
+    text-shadow: none
+  
+  10.2% 
+    opacity: 0
+    text-shadow: none
+  
+  20% 
+    opacity: 0
+    text-shadow: none
+  
+  20.1% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.25)
+  
+  20.6% 
+    opacity: 0
+    text-shadow: none
+  
+  30% 
+    opacity: 0
+    text-shadow: none
+  
+  30.1% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25)
+  
+  30.5% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25)
+  
+  30.6% 
+    opacity: 0
+    text-shadow: none
+  
+  45% 
+    opacity: 0
+    text-shadow: none
+  
+  45.1% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25)
+  
+  50% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25)
+  
+  55% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25)
+  
+  55.1% 
+    opacity: 0
+    text-shadow: none
+  
+  57% 
+    opacity: 0
+    text-shadow: none
+  
+  57.1% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35)
+  
+  60% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35)
+  
+  60.1% 
+    opacity: 0
+    text-shadow: none
+  
+  65% 
+    opacity: 0
+    text-shadow: none
+  
+  65.1% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35), 0 0 100px rgba(255, 255, 255, 0.1)
+  
+  75% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35), 0 0 100px rgba(255, 255, 255, 0.1)
+  
+  75.1% 
+    opacity: 0
+    text-shadow: none
+  
+  77% 
+    opacity: 0
+    text-shadow: none
+  
+  77.1% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.4), 0 0 110px rgba(255, 255, 255, 0.2), 0 0 100px rgba(255, 255, 255, 0.1)
+  
+  85% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.4), 0 0 110px rgba(255, 255, 255, 0.2), 0 0 100px rgba(255, 255, 255, 0.1)
+  
+  85.1% 
+    opacity: 0
+    text-shadow: none
+  
+  86% 
+    opacity: 0
+    text-shadow: none
+  
+  86.1% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.45), 0 0 110px rgba(255, 255, 255, 0.25), 0 0 100px rgba(255, 255, 255, 0.1)
+  
+  100% 
+    opacity: 1
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.45), 0 0 110px rgba(255, 255, 255, 0.25), 0 0 100px rgba(255, 255, 255, 0.1)
+  
+
