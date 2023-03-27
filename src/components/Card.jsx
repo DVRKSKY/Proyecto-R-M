@@ -1,27 +1,79 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
+import {connect} from "react-redux"
+import { addFav, removeFav } from "../redux/actions";
 
 
-export default function Card({name,status,species,gender,origin,image,onClose,id}) {
+function Card(props) {
+   
+   const [isFav, setisFav] = useState(false)
+   
+   const handleFavorite = () => {
+      if(isFav === true){
+         setisFav(false)
+         props.removeFav(props.id)
+      } else {
+         setisFav(true)
+         props.addFav(props)
+         
+      }
+   }
+   useEffect(() => {
+      props.myFavorites.forEach((fav) => {
+         if (fav.id === props.id) {
+            setisFav(true);
+         }
+      });
+   }, [props.myFavorites]);
    return (
       
       <div className='cardInfo'>
-         <button className="cardButton" onClick={() => onClose(id)}>
+         {
+            isFav ? (
+               <button onClick={handleFavorite}>❤️</button>
+            ) : (
+               <button onClick={handleFavorite}>🤍</button>
+            )
+         }
+         <button className="cardButton" onClick={() => props.onClose(props.id)}>
             <span className="material-symbols-outlined">
                pinch_zoom_in
             </span>
          </button>
          <div className="cardBody">
-            <Link to={`/detail/${id}`}>
-               <h3>{name}</h3>
+            <Link to={`/detail/${props.id}`}>
+               <h3>{props.name}</h3>
             </Link>
 
-            <p>{status}</p>
-            <p>{species}</p>
-            <p>{gender}</p>
-            <p>{origin}</p>
-            <img className="cardImage" src={image} alt={name} />
+            <p>{props.status}</p>
+            <p>{props.species}</p>
+            <p>{props.gender}</p>
+            <p>{props.origin}</p>
+            <img className="cardImage" src={props.image} alt={props.name} />
          </div>
       </div>
    );
 }
+
+const mapDispatchToProps = (dispatch) =>{
+   //los paramaetros igual los pasas por aquí
+   return{
+      addFav : (personaje) => {
+         dispatch(addFav(personaje))
+      },
+      removeFav: (id) => {
+         dispatch(removeFav(id))
+      }
+   }
+}
+
+const mapStateToProps = (state) => {
+   return {
+      myFavorites: state.myFavorites,
+   }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
+

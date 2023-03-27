@@ -10,6 +10,7 @@ import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
+import Favorites from './components/Favorites/Favorite';
 
 function App() {
    const location = useLocation()
@@ -20,14 +21,14 @@ function App() {
    //Seguridad, ejemplo corto
    const [access, setaccess] = useState(false)
    const EMAIL = 'amadeoconflores@gmail.com'
-   const PASSWORD = 'A74234627o!'
+   const PASSWORD = 'A12345678o!'
 
    //Creamos una función login
 
    const login = (userData) => {
       if(userData.password === PASSWORD && userData.email === EMAIL){
          setaccess(true)
-         navigate('/home')
+         navigate('/*')
       }
    }
 
@@ -35,7 +36,7 @@ function App() {
 
    const logOut = () =>{
       setaccess(false)
-      navigate('/')
+      navigate('/home')
    }
 
 
@@ -88,7 +89,8 @@ function App() {
             <Route path='/home' element={<Cards characters={characters} onClose= {onClose} />}/>
             <Route path='/detail/:id' element={<Deatil/>} />
             <Route path="*" element={<NoMatch/>} />
-
+            <Route path="/favorites" element={<Favorites/>} />
+            
          </Routes>
         
       </div>
