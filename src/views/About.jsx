@@ -10,6 +10,7 @@ export default function About() {
             veniam nesciunt, aliquid, cupiditate ex natus minus ut molestiae 
             dolores fuga doloremque consectetur a eius.
         </span>
+
     </div>
   )
 }

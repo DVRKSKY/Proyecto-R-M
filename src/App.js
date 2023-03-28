@@ -28,7 +28,7 @@ function App() {
    const login = (userData) => {
       if(userData.password === PASSWORD && userData.email === EMAIL){
          setaccess(true)
-         navigate('/*')
+         navigate('/home')
       }
    }
 
@@ -88,8 +88,8 @@ function App() {
             <Route path='/about' element={<About/>} />
             <Route path='/home' element={<Cards characters={characters} onClose= {onClose} />}/>
             <Route path='/detail/:id' element={<Deatil/>} />
-            <Route path="*" element={<NoMatch/>} />
             <Route path="/favorites" element={<Favorites/>} />
+            <Route path="/*" element={<NoMatch/>} />
             
          </Routes>
         
