@@ -1,4 +1,4 @@
-import { ADD_FAV, FILTER_CARDS, ORDER_CARDS, REMOVE_FAV } from "./actions"
+import { ADD_FAV, FILTER_CARDS, ORDER_CARDS, REMOVE_FAV, RESET_FILTER } from "./actions"
 
 const initialState = {
     myFavorites: [],
@@ -13,14 +13,29 @@ const rootReducer = (state = initialState, action) =>  {
 			//Le enviamos por payload lo que queremos actualizar
 			//De esta manera agregamos sin chancar al state global
 			//No usamos el push y pop, porque no estamos manendo el estado. sino estariamos tocando el array
-			return {...state, allCharacters: [...state.allCharacters, action.payload]}
+			return {
+				...state,
+				myFavorites: [...state.myFavorites, action.payload],
+				allCharacters: [...state.allCharacters, action.payload] 
+			}
 
         case REMOVE_FAV:
-            return {...state, myFavorites: state.myFavorites.filter(fav => fav.id !== parseInt(action.payload))}
+			const newFavorites = state.allCharacters.filter(fav => fav.id !== parseInt(action.payload))
+            return {...state, myFavorites: newFavorites, allCharacters: newFavorites}
 		
 		case FILTER_CARDS:
-			return {...state,  myFavorites: state.allCharacters.filter(fav => fav.gender === action.payload )}	
-
+			const newFilter = state.allCharacters.filter(
+				(ch) => ch.gender === action.payload
+			  );
+			return {
+				...state,
+				myFavorites: newFilter,
+			};
+		case RESET_FILTER:
+			return {
+				...state,
+				myFavorites: [...state.allCharacters],
+			};
 		case ORDER_CARDS: 
 			//creamos una copia del arrayoriginal
 			const allCharactersCopy = [...state.allCharacters];

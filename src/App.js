@@ -98,3 +98,9 @@ function App() {
 }
 
 export default App;
+
+//!.primero que es gratis dsp que no podes migrar
+//!.no es gratis
+//!. cambio de terminos
+//!. desaprbar el checkpoint
+//!. 

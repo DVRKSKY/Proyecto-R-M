@@ -6,6 +6,8 @@ export const ADD_FAV    =  "ADD_FAV";
 export const REMOVE_FAV =  "REMOVE_FAV";
 export const FILTER_CARDS = "FILTER_CARDS";
 export const ORDER_CARDS = "ORDER_CARDS";
+export const RESET_FILTER = "RESET_FILTER";
+
 
 
 
@@ -20,4 +22,7 @@ export const filterCards = (gender) => {
 }
 export const orderCards = (order) => {
 	return {type: ORDER_CARDS, payload: order}
+}
+export const resetFilter = () => {
+	return {type: RESET_FILTER }
 }
