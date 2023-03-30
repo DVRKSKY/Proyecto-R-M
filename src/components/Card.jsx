@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-
+import React, { useEffect } from "react"
+import { Link } from "react-router-dom"
+import { useState } from "react"
 import {connect} from "react-redux"
-import { addFav, removeFav } from "../redux/actions";
-
+import { addFav, removeFav } from "../redux/actions"
+import style from '.././modules/card.module.sass'
 
 function Card(props) {
    
@@ -29,7 +28,8 @@ function Card(props) {
    }, [props.myFavorites]);
    return (
       
-      <div className='cardInfo'>
+      <Link className={style.cardStyle} to={`/detail/${props.id}`}>
+         {/*
          {
             isFav ? (
                <button onClick={handleFavorite}>❤️</button>
@@ -41,19 +41,17 @@ function Card(props) {
             <span className="material-symbols-outlined">
                pinch_zoom_in
             </span>
-         </button>
-         <div className="cardBody">
-            <Link to={`/detail/${props.id}`}>
-               <h3>{props.name}</h3>
-            </Link>
-
-            <p>{props.status}</p>
-            <p>{props.species}</p>
-            <p>{props.gender}</p>
-            <p>{props.origin}</p>
-            <img className="cardImage" src={props.image} alt={props.name} />
+         </button>*/}
+         <div className={style.contenedorCard}>
+            <img className={style.imagenCard} src={props.image} alt={props.name}  />
+            <div className={style.corchete}>
+               <div className={`${style.corchete} ${style.tl}`}></div>
+               <div className={`${style.corchete} ${style.tr}`}></div>
+               <div className={`${style.corchete} ${style.br}`}></div>
+               <div className={`${style.corchete} ${style.bl}`}></div>
+            </div>
          </div>
-      </div>
+      </Link>
    );
 }
 

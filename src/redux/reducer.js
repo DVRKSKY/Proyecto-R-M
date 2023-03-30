@@ -1,8 +1,9 @@
-import { ADD_FAV, FILTER_CARDS, ORDER_CARDS, REMOVE_FAV, RESET_FILTER } from "./actions"
+import { ADD_FAV, FILTER_CARDS, ORDER_CARDS, REMOVE_FAV, RESET_FILTER, ADD_CHARACTER, REMOVE_CHARACTER } from "./actions"
 
 const initialState = {
     myFavorites: [],
 	allCharacters: [],
+	characters : [],
 }
 
 const rootReducer = (state = initialState, action) =>  {
@@ -46,6 +47,26 @@ const rootReducer = (state = initialState, action) =>  {
 			//retornmos el array ordenado
 			return { ...state, myFavorites: allCharactersCopy };
 		  
+		case ADD_CHARACTER:
+			if (Array.isArray(action.payload)) {
+				return {
+				...state,
+				characters: [...state.characters, ...action.payload],
+				};
+			}
+			return {
+				...state,
+				characters: [action.payload, ...state.characters],
+			};
+		case REMOVE_CHARACTER:
+			const newCharacter = state.myFavoritesOrigin.filter(
+				(ch) => ch.id !== action.payload
+			);
+			return {
+				...state,
+				myFavorites: newFavorites,
+				myFavoritesOrigin: newFavorites,
+			};
 		//Caso base de default
 		default:
 			return {...state}

@@ -8,6 +8,8 @@ export const FILTER_CARDS = "FILTER_CARDS";
 export const ORDER_CARDS = "ORDER_CARDS";
 export const RESET_FILTER = "RESET_FILTER";
 
+export const ADD_CHARACTER = "ADD_CHARACTER"
+export const REMOVE_CHARACTER = "REMOVE_CHARACTER"
 
 
 
@@ -26,3 +28,12 @@ export const orderCards = (order) => {
 export const resetFilter = () => {
 	return {type: RESET_FILTER }
 }
+
+
+
+export function addCharacter(character) {
+	return {type: ADD_CHARACTER, payload: character,};
+}
+export function removeCharacter(id) {
+	return {type: REMOVE_CHARACTER, payload: id,};
+  }

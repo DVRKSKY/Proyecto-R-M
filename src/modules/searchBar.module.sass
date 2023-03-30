@@ -1,0 +1,36 @@
+@import "./fuentes.module"
+
+.bloqueBusqueda
+    display: flex
+    width: 100%
+    margin-top: 70px
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+    .marcador
+        color: #00FD56
+        font-size: 22px
+    .descriptionBusqueda
+        color: #fff
+        font-size: 22px
+        font-family: 'Inconsolata', monospace
+        margin-left: 15px
+    .cursor
+        width: 4px
+        height: 100%
+        margin-left: 10px
+        animation: cursor 1s infinite
+        background-color: #00FD56
+
+@keyframes cursor
+    0%
+        opacity: 1
+    50%
+        opacity: 0
+    100%
+        opacity: 1
+
+        
+
+
+

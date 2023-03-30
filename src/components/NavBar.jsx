@@ -15,6 +15,9 @@ export default function NavBar(props) {
           <Link to='/favorites'>
             <button>Favoritos</button>
           </Link>
+          <Link to='/404'>
+            <button>Error</button>
+          </Link>
           <Link to='/'>
             <button>Login</button>
           </Link>
