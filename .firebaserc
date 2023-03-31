@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "rickandmorty-61836"
+  },
+  "targets": {
+    "rickandmorty-61836": {
+      "hosting": {
+        "hunt-rick": [
+          "hunt-rick"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

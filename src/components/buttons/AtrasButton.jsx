@@ -10,7 +10,7 @@ export default function AtrasButton() {
     }
     return (
         <div className={style.contenedorButtons}>
-            <button id="volver" className={`${style.buttonPantalla} ${style.buttonPantalla}`} onClick={() => handleClick("/test")}>Volver</button>
+            <button id="volver" className={`${style.buttonPantalla} ${style.buttonPantalla}`} onClick={() => handleClick("/home")}>Volver</button>
         </div>
     )
 }
