@@ -1,12 +1,10 @@
 import './App.sass';
-import Cards from './components/Cards.jsx';
 import NoMatch from './components/NoMatch';
 import Login from './views/login'; 
 import Home from './views/Home'
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Routes, Route } from 'react-router-dom';
-import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios'; 
+import { useEffect, useState } from 'react'; 
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { addCharacter } from "./redux/actions";
 
@@ -17,7 +15,7 @@ function App() {
 
    //Seguridad, ejemplo corto
    const [access, setaccess] = useState(false)
-   const EMAIL = 'amadeoconflores@gmail.com'
+   const EMAIL = 'henry@gmail.com'
    const PASSWORD = 'A12345678o!'
    const dispatch = useDispatch()
    //Creamos una función login
@@ -72,31 +70,7 @@ function App() {
         .catch((error) => {});
    }, []);
 
-   const onSearch = (id) => {
-      axios
-      .get(`https://rickandmortyapi.com/api/character/${id}`)
-      .then(({ data }) => {
-        console.log(":::::", data);
-        if (data.name) {
-          let exist = characters.find((ch) => ch.id === data.id);
-          if (exist) {
-            alert("ya existe");
-          } else {
-            setCharacters((oldChars) => [data, ...oldChars]);
-            dispatch(addCharacter(data))
-          }
-        } else {
-          window.alert("¡No hay personajes con este ID!");
-        } // .then(()=>{})
-      });
-   }
-
-   const createRamdom = () => {
-      let number = Math.random() * (826 - 1) + 1;
-      console.log(Math.floor(number))
-      return onSearch(Math.floor(number))
-
-   }
+   
    const onClose = (id)=>{
       setCharacters((oldChars) => {
       return oldChars.filter((ch) => ch.id !== id);
