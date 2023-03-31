@@ -4,6 +4,8 @@ import RickHolograma from '../assets/RickHolograma.png'
 import home from '../assets/iconos/home.svg'
 import about from '../assets/iconos/about.svg'
 import off from '../assets/iconos/off.svg'
+import pregunta from '../assets/iconos/Preguntas.png'
+
 import Cards from '../components/Cards'
 import SearchBar from '../components/SearchBar'
 import PantallaButton from '../components/buttons/PantallaButton'
@@ -12,14 +14,19 @@ import axios from 'axios';
 import { useLocation , useNavigate} from 'react-router-dom'
 import Deatil from '../components/Deatil'
 import Favorites from '../components/Favorites/Favorite'
-import About from './About'
 import AboutDetails from '../components/AboutDetails'
-
+import AtrasButton from '../components/buttons/AtrasButton'
+import { useDispatch } from 'react-redux'
+import { deleteCharacter } from '../redux/actions'
 export default function Home() {
     
-    const [characters, setCharacter] = useState([])
     const location = useLocation()
+    const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    //todo esto se va pal redux
+    
+    const [characters, setCharacter] = useState([])
     const onSearch = (id) => {
         let existe = characters.find(element => element.id === Number(id) )
         if(existe){
@@ -35,16 +42,15 @@ export default function Home() {
            });
         }
     }
-     const createRamdom = () => {
+    const createRamdom = () => {
         let number = Math.random() * (826 - 1) + 1;
         console.log(Math.floor(number))
         return onSearch(Math.floor(number))
-    
     }
-     const onClose = (id)=>{
-        const idNumber = Number.parseInt(id, 10)
-        const arrFiltered = characters.filter((element => element.id !== idNumber))
-        setCharacter([...arrFiltered,])
+    //Hasta aquí
+
+    const onClose = (id)=>{
+        dispatch(deleteCharacter(id))
     }
     const cambiarRuta = (ruta) =>{
         navigate(ruta)
@@ -53,7 +59,7 @@ export default function Home() {
     <div className={style.container}>
         <div className={style.izquierda}>
             <div className={style.mensajeHolograma}>
-                {location.pathname === "/test" ? 
+                {location.pathname === "/home" ? 
                     (
                     <span className={style.textoHolograma}>Buurp! Buscando a mi siguiente víctima en el universo... ¿Cuál es el ID de ese pobre desgraciado? </span>
                     ) : location.pathname.startsWith("/detail/")  ? (
@@ -82,7 +88,7 @@ export default function Home() {
                 <div className={style.pernos}></div>
                 <div className={style.pernos}></div>
                 <div className={style.botonesTablet}>
-                    <div className={style.botonTablet} onClick={()=> cambiarRuta("/test")}>
+                    <div className={style.botonTablet} onClick={()=> cambiarRuta("/home")}>
                         <img src={home} alt="icono-home"/>
                     </div>
                     <div className={style.botonTablet} onClick={()=> cambiarRuta("/about")}>
@@ -91,9 +97,12 @@ export default function Home() {
                     <div className={style.botonTablet} onClick={()=> cambiarRuta("/")}>
                         <img src={off} alt="icono-of"/>
                     </div>
+                    <div className={style.botonTablet} onClick={()=> cambiarRuta("/404")}>
+                        <img src={pregunta} alt="Preguntas"/>
+                    </div>
                 </div>
                 <div className={style.pantalla}>
-                    {location.pathname === "/test" ? (
+                    {location.pathname === "/home" ? (
                         <>
                         <SearchBar />
                         <PantallaButton />
@@ -101,7 +110,10 @@ export default function Home() {
                         </>
                     ) :  location.pathname.startsWith("/detail/")  ? (
                         // Código para el otro caso
+                        <>
+                        <AtrasButton/>
                         <Deatil/>
+                        </>
                     ) :  location.pathname.startsWith("/favorites")  ? (
                         // Código para el otro caso
                         <>
@@ -115,7 +127,7 @@ export default function Home() {
                         </>
 
                     ): (
-                        <h1>bolis</h1>
+                        <h1>Nothing</h1>
 
 
                         // Código para cualquier otro caso

@@ -1,4 +1,4 @@
-import { ADD_FAV, FILTER_CARDS, ORDER_CARDS, REMOVE_FAV, RESET_FILTER, ADD_CHARACTER, REMOVE_CHARACTER } from "./actions"
+import { ADD_FAV, FILTER_CARDS, ORDER_CARDS, REMOVE_FAV, RESET_FILTER, ADD_CHARACTER, REMOVE_CHARACTER, DELETE_CHARACTER } from "./actions"
 
 const initialState = {
     myFavorites: [],
@@ -67,6 +67,14 @@ const rootReducer = (state = initialState, action) =>  {
 				myFavorites: newFavorites,
 				myFavoritesOrigin: newFavorites,
 			};
+		case DELETE_CHARACTER:
+			const characterDeleted = state.characters.filter(
+				(ch) => ch.id !== action.payload
+			);
+			return {
+				...state,
+				characters: characterDeleted,
+			}
 		//Caso base de default
 		default:
 			return {...state}

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import Card from "../Card";
+import style from "../../modules/exterminados.module.sass"
 import { orderCards,  filterCards, resetFilter } from "../../redux/actions";
 
 //Probemos ahora usando hooks
@@ -24,35 +25,35 @@ const Favorites = ()=>{
     }
 
     return(
-        <div>
-            <div>
-                <h2>Ordenar</h2>
-                <select onChange={handleOrder} defaultValue={"DEFAULT"}>
-                    <option value ="DEFAULT" disable>Select Orden</option>
+        <div className={style.contenedorPadre}>
+            <div className={style.contenedor}>
+                <select className={style.buttonFilters} onChange={handleOrder} defaultValue={"DEFAULT"}>
+                    <option value ="DEFAULT" disable>Ordenar</option>
                     <option value ="A">Ascendente</option>
-                    <option value ="D">Descendiente</option>
+                    <option value ="D">Descendente</option>
                 </select>
-                <h2>Filtrar</h2>
-                <select onChange={handleFilter}  defaultValue={"DEFAULT"}>
-                    <option value ="DEFAULT" disable>Select gender</option>
+                <select className={style.buttonFilters} onChange={handleFilter}  defaultValue={"DEFAULT"}>
+                    <option value ="DEFAULT" disable>Filtrar</option>
                     <option value ="Male">Male</option>
                     <option value ="Female">Female</option>
                     <option value ="Genderless">Genderless</option>
                     <option value ="unknow">unknow</option>
 
                 </select>
-                <button onClick={resetbutton}>Reset</button>
+                <button className={style.buttonFilters} onClick={resetbutton}>Reset</button>
             </div>
-            {favorites.map((fav) => {
-                return <Card 
-                    key={fav.id}
-                    id={fav.id} 
-                    name={fav.name} 
-                    species={fav.species} 
-                    gender={fav.gender} 
-                    image={fav.image} 
-                />
-            })}
+            <div className={style.cardsFavorite}>
+                {favorites.map((fav) => {
+                    return <Card 
+                        key={fav.id}
+                        id={fav.id} 
+                        name={fav.name} 
+                        species={fav.species} 
+                        gender={fav.gender} 
+                        image={fav.image} 
+                    />
+                })}
+            </div>
         </div>
     )
 }

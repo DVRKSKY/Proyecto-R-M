@@ -104,28 +104,19 @@ function App() {
    }
    return (
       <div className='App'>
-         
          <Routes>
             {/* Pasamos la funcion login al componente login como props */}
-
             <Route exact path='/' element={<Login login={login}/>} />
-
             <Route path='/about' element={<Home/>} />
-
-            <Route path='/home' element={<Cards onClose= {onClose} />}/>
-            
-            <Route path='/test' element={<Home/>}/>
+            <Route path='/home' element={<Home/>}/>
             <Route path='/detail/:id' element={<Home/>} />
             <Route path="/favorites" element={<Home/>} />
-
             <Route path="/404" element={<NoMatch/>} />
-            
          </Routes>
         
       </div>
    );
 }
-
 export default App;
 
 //!.primero que es gratis dsp que no podes migrar

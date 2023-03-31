@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import {connect} from "react-redux"
 import { addFav, removeFav } from "../redux/actions"
@@ -8,7 +8,7 @@ import style from '.././modules/card.module.sass'
 function Card(props) {
    
    const [isFav, setisFav] = useState(false)
-   
+   const navigate = useNavigate()
    const handleFavorite = () => {
       if(isFav === true){
          setisFav(false)
@@ -26,24 +26,30 @@ function Card(props) {
          }
       });
    }, [props.myFavorites]);
+   const verDetails = (ruta) =>{
+      navigate(ruta)
+   }
    return (
       
-      <Link className={style.cardStyle} to={`/detail/${props.id}`}>
-         {/*
-         {
-            isFav ? (
-               <button onClick={handleFavorite}>❤️</button>
-            ) : (
-               <button onClick={handleFavorite}>🤍</button>
-            )
-         }
-         <button className="cardButton" onClick={() => props.onClose(props.id)}>
-            <span className="material-symbols-outlined">
-               pinch_zoom_in
-            </span>
-         </button>*/}
+      <div className={style.cardStyle} >
+
          <div className={style.contenedorCard}>
             <img className={style.imagenCard} src={props.image} alt={props.name}  />
+
+            <div className={style.actions}>
+               {
+                  isFav ? (
+                     <button className={style.botonesHover} onClick={handleFavorite}>💀</button>
+                  ) : (
+                     <button className={style.botonesHover} onClick={handleFavorite}>🔪</button>
+                  )
+               }
+               <button className={style.botonesHover} onClick={() => props.onClose(props.id)}>Delete</button>
+               <button className={style.botonesHover} onClick={()=>verDetails(`/detail/${props.id}`)}>Info</button>
+
+            </div>
+
+
             <div className={style.corchete}>
                <div className={`${style.corchete} ${style.tl}`}></div>
                <div className={`${style.corchete} ${style.tr}`}></div>
@@ -51,7 +57,7 @@ function Card(props) {
                <div className={`${style.corchete} ${style.bl}`}></div>
             </div>
          </div>
-      </Link>
+      </div>
    );
 }
 

@@ -10,6 +10,7 @@ export const RESET_FILTER = "RESET_FILTER";
 
 export const ADD_CHARACTER = "ADD_CHARACTER"
 export const REMOVE_CHARACTER = "REMOVE_CHARACTER"
+export const DELETE_CHARACTER = "DELETE_CHARACTER"
 
 
 
@@ -36,4 +37,7 @@ export function addCharacter(character) {
 }
 export function removeCharacter(id) {
 	return {type: REMOVE_CHARACTER, payload: id,};
-  }
+}
+export function deleteCharacter(id) {
+	return {type: DELETE_CHARACTER, payload: id}
+}
