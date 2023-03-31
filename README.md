@@ -1,6 +1,26 @@
-# Getting Started with Create React App
+# Algunas notas por aquí, LEEEEMEEE!
+
+Hola cazarecompezas interestelares, buscas a alguien. Con nuestra web lo encontrarás super facil.
+Además de gestionar tus trabajitos 💀🤑🤑.
+
+## Credenciales para entrar
+
+Email: henry@gmail.com
+Contraseña: A12345678o!
+
+## Notas del Desarrollador
+
+1. Es una web interestelar de cazarecompenzas
+2. Solo marca  la opcion de 🔪 si el objetivo fue eliminado
+3. Deberias ver que ahora tiene una 💀
+4. Puedes ver a los exterminados en el boton grande de exterminados
+5. Si encuentras un bug, no dudes en escribirme
+6. Aún falta refactorizar mucho, pero ya luego 🫠
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
