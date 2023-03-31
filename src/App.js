@@ -15,6 +15,8 @@ function App() {
 
    //Seguridad, ejemplo corto
    const [access, setaccess] = useState(false)
+
+   //Usuario y contrase
    const EMAIL = 'henry@gmail.com'
    const PASSWORD = 'A12345678o!'
    const dispatch = useDispatch()
@@ -40,11 +42,11 @@ function App() {
    //La funcion hace que mientras este en false no pueda entrar a otra ruta
 
 
-   /*
+   
    useEffect(()=>{
       !access && navigate('/')
    }, access)
-   */
+   
    
    useEffect(() => {
       const requests = [];

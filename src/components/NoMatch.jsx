@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 export default function NoMatch() {
   const navigate = useNavigate();
   const backToHome = () => {
-    navigate("/")
+    navigate("/home")
   }
   return (
     <div className='fondoDeEspacioRelative'>
