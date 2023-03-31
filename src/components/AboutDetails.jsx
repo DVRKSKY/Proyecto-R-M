@@ -1,12 +1,21 @@
-import useCharacter from '../hooks/useCharacter'
 import style from '../modules/details.module.sass'
+import me from '../assets/Me.png'
+export default function AboutDetails() {
+    const character = {
+        name: "Amadeo Flores",
+        id: "Infinite",
+        status: "Alive",
+        species: "Developer",
+        gender: "Male",
+        origin: {
+            name: "Tierra c-137"
+        },
 
-export default function Deatil() {
-    const character = useCharacter()
+    }
     return (
         <div className={style.contenedorDetails}>
             <div className={style.contenedorImagen}>
-                <img src={character?.image} alt={character?.name}/>
+                <img src={me} alt={character?.name}/>
             </div>
             <div className={style.contenedorDatos}>
                 <div className={style.filaData}>

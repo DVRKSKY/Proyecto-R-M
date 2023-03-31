@@ -9,15 +9,17 @@ import SearchBar from '../components/SearchBar'
 import PantallaButton from '../components/buttons/PantallaButton'
 import { useState } from 'react'
 import axios from 'axios';
-import { useLocation } from 'react-router-dom'
+import { useLocation , useNavigate} from 'react-router-dom'
 import Deatil from '../components/Deatil'
-
+import Favorites from '../components/Favorites/Favorite'
+import About from './About'
+import AboutDetails from '../components/AboutDetails'
 
 export default function Home() {
     
     const [characters, setCharacter] = useState([])
     const location = useLocation()
-    
+    const navigate = useNavigate()
     const onSearch = (id) => {
         let existe = characters.find(element => element.id === Number(id) )
         if(existe){
@@ -44,6 +46,9 @@ export default function Home() {
         const arrFiltered = characters.filter((element => element.id !== idNumber))
         setCharacter([...arrFiltered,])
     }
+    const cambiarRuta = (ruta) =>{
+        navigate(ruta)
+    }
   return (
     <div className={style.container}>
         <div className={style.izquierda}>
@@ -54,6 +59,12 @@ export default function Home() {
                     ) : location.pathname.startsWith("/detail/")  ? (
                             // Código para el otro caso
                     <span className={style.textoHolograma}>Oye Morty, ¿quién es este sujeto y cómo lo encuentro? Necesitamos investigar un poco más para resolver esto.</span>
+                    ) : location.pathname.startsWith("/favorites")  ? (
+                        // Código para el otro caso
+                    <span className={style.textoHolograma}>¡Vamos a revisar esos objetivos eliminados, Morty!</span>
+                    ): location.pathname.startsWith("/about")  ? (
+                        // Código para el otro caso
+                    <span className={style.textoHolograma}>¿Qué? ¿Me utilizaste en una  web? ¡Buuurp! Eso es bastante impresionante, debo decirlo.</span>
                     ) : 
                     (
                             <h1>bolis</h1>
@@ -71,13 +82,13 @@ export default function Home() {
                 <div className={style.pernos}></div>
                 <div className={style.pernos}></div>
                 <div className={style.botonesTablet}>
-                    <div className={style.botonTablet}>
+                    <div className={style.botonTablet} onClick={()=> cambiarRuta("/test")}>
                         <img src={home} alt="icono-home"/>
                     </div>
-                    <div className={style.botonTablet}>
+                    <div className={style.botonTablet} onClick={()=> cambiarRuta("/about")}>
                         <img src={about} alt="icono-about"/>
                     </div>
-                    <div className={style.botonTablet}>
+                    <div className={style.botonTablet} onClick={()=> cambiarRuta("/")}>
                         <img src={off} alt="icono-of"/>
                     </div>
                 </div>
@@ -91,7 +102,19 @@ export default function Home() {
                     ) :  location.pathname.startsWith("/detail/")  ? (
                         // Código para el otro caso
                         <Deatil/>
-                    ) : (
+                    ) :  location.pathname.startsWith("/favorites")  ? (
+                        // Código para el otro caso
+                        <>
+                        <Favorites/>
+                        </>
+
+                    ):  location.pathname.startsWith("/about")  ? (
+                        // Código para el otro caso
+                        <>
+                        <AboutDetails/>
+                        </>
+
+                    ): (
                         <h1>bolis</h1>
 
 

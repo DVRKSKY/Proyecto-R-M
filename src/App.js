@@ -1,8 +1,5 @@
 import './App.sass';
 import Cards from './components/Cards.jsx';
-import NavBar from './components/NavBar';
-import About from './views/About';
-import Deatil from './components/Deatil';
 import NoMatch from './components/NoMatch';
 import Login from './views/login'; 
 import Home from './views/Home'
@@ -11,12 +8,9 @@ import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { Navigate } from 'react-router-dom';
 import { addCharacter } from "./redux/actions";
-import Favorites from './components/Favorites/Favorite';
 
 function App() {
-   const location = useLocation()
    //Usamos el usenavigate para viajar entre rutas no olvidar
    const navigate = useNavigate()
    const [characters, setCharacters] = useState([])
@@ -110,21 +104,20 @@ function App() {
    }
    return (
       <div className='App'>
-         {
-            //Bloqueamos con use location para que no se muestre en el login
-            location.pathname === "/" ? null : <NavBar onSearch = {onSearch} onRamdon={createRamdom} logOut={logOut}/>
-         }
+         
          <Routes>
             {/* Pasamos la funcion login al componente login como props */}
 
             <Route exact path='/' element={<Login login={login}/>} />
-            <Route path='/about' element={<About/>} />
+
+            <Route path='/about' element={<Home/>} />
+
             <Route path='/home' element={<Cards onClose= {onClose} />}/>
             
             <Route path='/test' element={<Home/>}/>
             <Route path='/detail/:id' element={<Home/>} />
+            <Route path="/favorites" element={<Home/>} />
 
-            <Route path="/favorites" element={<Favorites/>} />
             <Route path="/404" element={<NoMatch/>} />
             
          </Routes>
