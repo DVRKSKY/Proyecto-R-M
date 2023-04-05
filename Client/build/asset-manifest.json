@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8908c71c.css",
+    "main.js": "/static/js/main.95b6adb4.js",
+    "static/media/Fondo.png": "/static/media/Fondo.1fcde72cc46ec8985f3e.png",
+    "static/media/Bg-views.png": "/static/media/Bg-views.f024beda081addfa14b5.png",
+    "static/media/RickYMorty.png": "/static/media/RickYMorty.98bd1beec49afac661a6.png",
+    "static/media/RickHolograma.png": "/static/media/RickHolograma.1e4709949dcf13da802d.png",
+    "static/media/RickEspacio.png": "/static/media/RickEspacio.fe523300fb8c2103f79c.png",
+    "static/media/logo.png": "/static/media/logo.0d3d60d28fc74051c9ca.png",
+    "static/media/MortSpace.png": "/static/media/MortSpace.b02f7c0970a8e41efd4a.png",
+    "static/media/Me.png": "/static/media/Me.05704f81e1fbaafdb3f2.png",
+    "static/media/identificador.png": "/static/media/identificador.60749bcd092ef6a133c1.png",
+    "static/media/ponteRicoso.ttf": "/static/media/ponteRicoso.c3d1dfc692e3547fed16.ttf",
+    "static/media/Portal.png": "/static/media/Portal.0ee2e9f48f8d513c050d.png",
+    "static/media/off.svg": "/static/media/off.1710d598f8ba42c54049cfa8dd73f674.svg",
+    "static/media/about.svg": "/static/media/about.7d02ec9402f56073a6a77290640bf793.svg",
+    "index.html": "/index.html",
+    "static/media/home.svg": "/static/media/home.97e91a520c44016b2d3fc1ab4a5cd292.svg",
+    "main.8908c71c.css.map": "/static/css/main.8908c71c.css.map",
+    "main.95b6adb4.js.map": "/static/js/main.95b6adb4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8908c71c.css",
+    "static/js/main.95b6adb4.js"
+  ]
+}
