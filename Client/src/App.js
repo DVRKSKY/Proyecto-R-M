@@ -21,7 +21,7 @@ function App() {
    const PASSWORD = 'A12345678o!'
    const dispatch = useDispatch()
    //Creamos una función login
-
+/*
    const login = function (userData) {
       const { email, password } = userData;
       const URL = 'http://localhost:3001/rickandmorty/login/';
@@ -30,6 +30,21 @@ function App() {
          setaccess(data);
          access && navigate('/home');
       });
+   }
+*/
+   const login = async function (userData) {
+      try {
+         const { email, password } = userData;
+         const URL = 'http://localhost:3001/rickandmorty/login/';
+         const { data } = await axios.get(URL + `?email=${email}&password=${password}`);
+         const { access } = data;
+         setaccess(data);
+         access && navigate('/home');
+      } catch (error) {
+         console.error('Error while logging in:', error);
+         // Manejar el error apropiadamente, por ejemplo:
+         // setErrorMessage('Invalid email or password');
+      }
    }
 
    //Hacemos un logOut

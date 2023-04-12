@@ -3,8 +3,8 @@
 //"ADD_FAV""ADD_FVV"
 import axios from 'axios'
 
-export const ADD_FAV    =  "ADD_FAV";
-export const REMOVE_FAV =  "REMOVE_FAV";
+export const ADD_FAV = "ADD_FAV";
+export const REMOVE_FAV = "REMOVE_FAV";
 export const FILTER_CARDS = "FILTER_CARDS";
 export const ORDER_CARDS = "ORDER_CARDS";
 export const RESET_FILTER = "RESET_FILTER";
@@ -15,7 +15,7 @@ export const DELETE_CHARACTER = "DELETE_CHARACTER"
 
 
 
-export const addFav = ({key,id,name,status,	species,gender,	origin,	image,	onClose,}) => {
+/*export const addFav = ({key,id,name,status,	species,gender,	origin,	image,	onClose,}) => {
 	const personaje = {key,id,name,status,species,gender,origin,image,onClose,}
 	console.log(":::", personaje)
 	const endpoint = 'http://localhost:3001/rickandmorty/fav';
@@ -27,8 +27,26 @@ export const addFav = ({key,id,name,status,	species,gender,	origin,	image,	onClo
 			});
 		});
 	};
+}*/
+export const addFav = ({ key, id, name, status, species, gender, origin, image, onClose, }) => {
+	const personaje = { key, id, name, status, species, gender, origin, image, onClose, }
+	console.log(":::", personaje)
+	const endpoint = 'http://localhost:3001/rickandmorty/fav';
+	return async (dispatch) => {
+		try {
+			const { data } = await axios.post(endpoint, personaje);
+			dispatch({
+				type: 'ADD_FAV',
+				payload: data,
+			});
+		} catch (error) {
+			console.log(error);
+			// Aquí puedes manejar el error de alguna manera específica si lo necesitas
+		}
+	};
 }
-export const removeFav = (id) => {
+
+/*export const removeFav = (id) => {
 	const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
 	return (dispatch) => {
 	  axios
@@ -45,26 +63,40 @@ export const removeFav = (id) => {
 		  // return dispatch({ type: 'REMOVE_FAV_ERROR', payload: error });
 		});
 	};
-  };
-  
+  };*/
+export const removeFav = async (id) => {
+	const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
+	try {
+		const { data } = await axios.delete(endpoint);
+		return {
+			type: 'REMOVE_FAV',
+			payload: data,
+		};
+	} catch (error) {
+		console.error('Error while removing favorite:', error);
+		// Manejar el error apropiadamente, por ejemplo:
+		// return { type: 'REMOVE_FAV_ERROR', payload: error };
+	}
+};
+
 export const filterCards = (gender) => {
-	return {type: FILTER_CARDS, payload: gender }
+	return { type: FILTER_CARDS, payload: gender }
 }
 export const orderCards = (order) => {
-	return {type: ORDER_CARDS, payload: order}
+	return { type: ORDER_CARDS, payload: order }
 }
 export const resetFilter = () => {
-	return {type: RESET_FILTER }
+	return { type: RESET_FILTER }
 }
 
 
 
 export function addCharacter(character) {
-	return {type: ADD_CHARACTER, payload: character,};
+	return { type: ADD_CHARACTER, payload: character, };
 }
 export function removeCharacter(id) {
-	return {type: REMOVE_CHARACTER, payload: id,};
+	return { type: REMOVE_CHARACTER, payload: id, };
 }
 export function deleteCharacter(id) {
-	return {type: DELETE_CHARACTER, payload: id}
+	return { type: DELETE_CHARACTER, payload: id }
 }

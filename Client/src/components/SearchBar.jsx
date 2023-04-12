@@ -10,8 +10,8 @@ export default function SearchBar() {
    const [id, setId] = useState("")
    const {characters} = useSelector(state => state)
    const dispatch = useDispatch()
-   const URL_BASE = "http://localhost:3001/rickandmorty/character/detail/"
-   const onSearch = (id) => {
+   const URL_BASE = "http://localhost:3001"
+   /*const onSearch = (id) => {
       //cambioamos la url para conectarla con el back
       axios
       .get(`${URL_BASE}${id}`)
@@ -31,8 +31,27 @@ export default function SearchBar() {
         console.log(err);
         console.log("Hubo un error")
       });
-   }
-
+   }*/
+   const onSearch = async (id) => {
+    try {
+      const { data } = await axios.get(`${URL_BASE}/character/${id}`);
+      console.log(":::::xd", data);
+      if (data.name) {
+        let exist = characters.find((ch) => ch.id === data.id);
+        if (exist) {
+          alert("ya existe");
+        } else {
+          dispatch(addCharacter(data));
+        }
+      } else {
+        window.alert("¡No hay personajes con este ID!");
+      } 
+    } catch (error) {
+      console.log(error);
+      console.log("Hubo un error");
+    }
+  }
+  
    const onRamdon = () => {
       let number = Math.random() * (826 - 1) + 1;
       console.log(Math.floor(number))
