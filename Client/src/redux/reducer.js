@@ -14,16 +14,12 @@ const rootReducer = (state = initialState, action) =>  {
 			//Le enviamos por payload lo que queremos actualizar
 			//De esta manera agregamos sin chancar al state global
 			//No usamos el push y pop, porque no estamos manendo el estado. sino estariamos tocando el array
-			return {
-				...state,
-				myFavorites: [...state.myFavorites, action.payload],
-				allCharacters: [...state.allCharacters, action.payload] 
-			}
-
+			return { ...state, myFavorites: action.payload, allCharacters: action.payload };
+			//Esto me manda mucha data
         case REMOVE_FAV:
-			const newFavorites = state.allCharacters.filter(fav => fav.id !== parseInt(action.payload))
-            return {...state, myFavorites: newFavorites, allCharacters: newFavorites}
-		
+			//const newFavorites = state.allCharacters.filter(fav => fav.id !== parseInt(action.payload))
+            //return {...state, myFavorites: newFavorites, allCharacters: newFavorites}
+			return { ...state, myFavorites: action.payload };
 		case FILTER_CARDS:
 			const newFilter = state.allCharacters.filter(
 				(ch) => ch.gender === action.payload
@@ -64,8 +60,8 @@ const rootReducer = (state = initialState, action) =>  {
 			);
 			return {
 				...state,
-				myFavorites: newFavorites,
-				myFavoritesOrigin: newFavorites,
+				myFavorites: newCharacter,
+				myFavoritesOrigin: newCharacter,
 			};
 		case DELETE_CHARACTER:
 			const characterDeleted = state.characters.filter(

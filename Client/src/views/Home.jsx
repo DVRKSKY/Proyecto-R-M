@@ -26,8 +26,8 @@ export default function Home() {
 
     //todo esto se va pal redux
     
-    const [characters, setCharacter] = useState([])
-    const onSearch = (id) => {
+   /* const [characters, setCharacter] = useState([])*/
+    /*const onSearch = (id) => {
         let existe = characters.find(element => element.id === Number(id) )
         if(existe){
            window.alert('Ya esta registrado ese personaje');
@@ -41,12 +41,12 @@ export default function Home() {
               }
            });
         }
-    }
-    const createRamdom = () => {
+    }*/
+    /*const createRamdom = () => {
         let number = Math.random() * (826 - 1) + 1;
         console.log(Math.floor(number))
         return onSearch(Math.floor(number))
-    }
+    }*/
     //Hasta aquí
 
     const onClose = (id)=>{

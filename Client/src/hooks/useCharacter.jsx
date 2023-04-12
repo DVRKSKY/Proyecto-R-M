@@ -5,12 +5,12 @@ import { useSelector } from 'react-redux'
 
 
 const useCharacter = () => {
-    const {id} = useParams()
+    let {id} = useParams()
     const [character , setCharacter] = useState({})
     const characters = useSelector((state) => state.characters )
 
     useEffect(() => {
-        const aux = characters.find(personaje => personaje.id === parseInt(id))
+        const aux = characters.find(personaje => personaje.id === id)
         setCharacter(aux)
      }, [id]);
     

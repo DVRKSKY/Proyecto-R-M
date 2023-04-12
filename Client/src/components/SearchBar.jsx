@@ -10,13 +10,13 @@ export default function SearchBar() {
    const [id, setId] = useState("")
    const {characters} = useSelector(state => state)
    const dispatch = useDispatch()
-   const URL_BASE = "http://localhost:3001/rickandmorty"
+   const URL_BASE = "http://localhost:3001/rickandmorty/character/detail/"
    const onSearch = (id) => {
       //cambioamos la url para conectarla con el back
       axios
-      .get(`${URL_BASE}/character/${id}`)
+      .get(`${URL_BASE}${id}`)
       .then(({ data }) => {
-        console.log(":::::", data);
+        console.log(":::::xd", data);
         if (data.name) {
           let exist = characters.find((ch) => ch.id === data.id);
           if (exist) {

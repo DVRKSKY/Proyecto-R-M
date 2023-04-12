@@ -3,7 +3,7 @@ import { useState } from "react";
 import Card from "../Card";
 import style from "../../modules/exterminados.module.sass"
 import { orderCards,  filterCards, resetFilter } from "../../redux/actions";
-
+import { removeFav } from '../../redux/actions'
 //Probemos ahora usando hooks
 const Favorites = ()=>{
     const [aux, setaux] = useState(false)
@@ -23,7 +23,9 @@ const Favorites = ()=>{
     const resetbutton = () =>{
         dispatch(resetFilter())
     }
-
+    const onClose = (id)=>{
+        dispatch(removeFav(id))
+    }
     return(
         <div className={style.contenedorPadre}>
             <div className={style.contenedor}>
@@ -45,12 +47,16 @@ const Favorites = ()=>{
             <div className={style.cardsFavorite}>
                 {favorites.map((fav) => {
                     return <Card 
-                        key={fav.id}
-                        id={fav.id} 
-                        name={fav.name} 
-                        species={fav.species} 
-                        gender={fav.gender} 
-                        image={fav.image} 
+                        
+                        key={fav.id.toString()}
+                        id={fav.id}
+                        name={fav.name}
+                        status={fav.status}
+                        species={fav.species}
+                        gender={fav.gender}
+                        origin={fav.origin.name}
+                        image={fav.image}
+                        onClose={onClose}
                     />
                 })}
             </div>

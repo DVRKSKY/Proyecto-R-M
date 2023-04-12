@@ -1,6 +1,7 @@
 
 //Se define asi para evitar escribir mal en el momento de escribir el case
 //"ADD_FAV""ADD_FVV"
+import axios from 'axios'
 
 export const ADD_FAV    =  "ADD_FAV";
 export const REMOVE_FAV =  "REMOVE_FAV";
@@ -14,12 +15,38 @@ export const DELETE_CHARACTER = "DELETE_CHARACTER"
 
 
 
-export const addFav = (personaje) => {
-	return {type: ADD_FAV, payload: personaje }
+export const addFav = ({key,id,name,status,	species,gender,	origin,	image,	onClose,}) => {
+	const personaje = {key,id,name,status,species,gender,origin,image,onClose,}
+	console.log(":::", personaje)
+	const endpoint = 'http://localhost:3001/rickandmorty/fav';
+	return (dispatch) => {
+		axios.post(endpoint, personaje).then(({ data }) => {
+			return dispatch({
+				type: 'ADD_FAV',
+				payload: data,
+			});
+		});
+	};
 }
 export const removeFav = (id) => {
-	return {type: REMOVE_FAV, payload: id }
-}
+	const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
+	return (dispatch) => {
+	  axios
+		.delete(endpoint)
+		.then(({ data }) => {
+		  return dispatch({
+			type: 'REMOVE_FAV',
+			payload: data,
+		  });
+		})
+		.catch((error) => {
+		  console.error('Error while removing favorite:', error);
+		  // Manejar el error apropiadamente, por ejemplo:
+		  // return dispatch({ type: 'REMOVE_FAV_ERROR', payload: error });
+		});
+	};
+  };
+  
 export const filterCards = (gender) => {
 	return {type: FILTER_CARDS, payload: gender }
 }
