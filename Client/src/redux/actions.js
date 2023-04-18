@@ -12,7 +12,8 @@ export const RESET_FILTER = "RESET_FILTER";
 export const ADD_CHARACTER = "ADD_CHARACTER"
 export const REMOVE_CHARACTER = "REMOVE_CHARACTER"
 export const DELETE_CHARACTER = "DELETE_CHARACTER"
-
+export const ACTIVATE_NOTIFY = "ACTIVATE_NOTIFY"
+export const DESACTIVATE_NOTIFY = "DESACTIVATE_NOTIFY"
 
 
 /*export const addFav = ({key,id,name,status,	species,gender,	origin,	image,	onClose,}) => {
@@ -30,7 +31,6 @@ export const DELETE_CHARACTER = "DELETE_CHARACTER"
 }*/
 export const addFav = ({ key, id, name, status, species, gender, origin, image, onClose, }) => {
 	const personaje = { key, id, name, status, species, gender, origin, image, onClose, }
-	console.log(":::", personaje)
 	const endpoint = 'http://localhost:3001/rickandmorty/fav';
 	return async (dispatch) => {
 		try {
@@ -64,20 +64,23 @@ export const addFav = ({ key, id, name, status, species, gender, origin, image, 
 		});
 	};
   };*/
-export const removeFav = async (id) => {
+export const removeFav = (id) => {
 	const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
-	try {
-		const { data } = await axios.delete(endpoint);
-		return {
-			type: 'REMOVE_FAV',
-			payload: data,
-		};
-	} catch (error) {
-		console.error('Error while removing favorite:', error);
-		// Manejar el error apropiadamente, por ejemplo:
-		// return { type: 'REMOVE_FAV_ERROR', payload: error };
-	}
+	return async (dispatch) => {
+		try {
+			const { data } = await axios.delete(endpoint);
+			dispatch({
+				type: 'REMOVE_FAV',
+				payload: data,
+			});
+		} catch (error) {
+			console.error('Error while removing favorite:', error);
+			// Manejar el error apropiadamente, por ejemplo:
+			// return dispatch({ type: 'REMOVE_FAV_ERROR', payload: error });
+		}
+	};
 };
+
 
 export const filterCards = (gender) => {
 	return { type: FILTER_CARDS, payload: gender }
@@ -99,4 +102,15 @@ export function removeCharacter(id) {
 }
 export function deleteCharacter(id) {
 	return { type: DELETE_CHARACTER, payload: id }
+}
+export const activateNotify = (name, time = 2000) => {
+	return (dispatch) => {
+	  dispatch({ type: ACTIVATE_NOTIFY, payload: name });
+	  setTimeout(() => {
+		dispatch({ type: DESACTIVATE_NOTIFY });
+	  }, time);
+	};
+  };
+export function desactivateNotify(){
+	return {type: DESACTIVATE_NOTIFY}
 }

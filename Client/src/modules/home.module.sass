@@ -75,8 +75,8 @@
             flex-direction: column
             .pernos
                 position: absolute
-                width: 22px
-                height: 22px
+                width: 18px
+                height: 18px
                 background-color: #4B5147
                 border-radius: 100%
                 border: 1.5px solid #22251F
@@ -116,7 +116,7 @@
                     transform: rotate(120deg)
             .pantalla
                 width: 80%
-                height: 84%
+                height: 80%
                 background-color: #142C18
                 border: none
                 border-radius: 10px
@@ -128,6 +128,7 @@
                 margin-right: 65px
                 padding-right: 65px
                 padding-left: 65px
+                padding-bottom: 5px
                 box-shadow: inset -6px -6px 0px 0px #394F3D
             .botonesTablet
                 display: flex
@@ -152,6 +153,27 @@
                     .icono
                         width: 15px
                         height: 17px
+            .notificacion
+              position: absolute
+              display: flex
+              flex-direction: row
+              justify-content: space-between
+              align-items: center
+              width: 300px
+              height: 70px
+              border-radius: 14px
+              border: 4px solid #142C18
+              z-index: 10
+              bottom: 8%
+              right: 5%
+              padding: 10PX
+              background: linear-gradient(rgba(41, 76, 79, 0.9), rgba(37, 73, 77, 0.9))
+              .text
+                color: white
+                font-size: 18px
+                font-family: 'Inconsolata', monospace
+              
+
 @keyframes holograma 
   0% 
     opacity: 1

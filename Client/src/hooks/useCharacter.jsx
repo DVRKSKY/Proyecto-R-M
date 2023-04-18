@@ -10,7 +10,8 @@ const useCharacter = () => {
     const characters = useSelector((state) => state.characters )
 
     useEffect(() => {
-        const aux = characters.find(personaje => personaje.id === id)
+        const aux = characters.find(personaje => personaje.id == id)
+        console.log(aux)
         setCharacter(aux)
      }, [id]);
     

@@ -1,9 +1,10 @@
-import { ADD_FAV, FILTER_CARDS, ORDER_CARDS, REMOVE_FAV, RESET_FILTER, ADD_CHARACTER, REMOVE_CHARACTER, DELETE_CHARACTER } from "./actions"
+import { ADD_FAV, FILTER_CARDS, ORDER_CARDS, REMOVE_FAV, RESET_FILTER, ADD_CHARACTER, REMOVE_CHARACTER, DELETE_CHARACTER, ACTIVATE_NOTIFY,DESACTIVATE_NOTIFY } from "./actions"
 
 const initialState = {
     myFavorites: [],
 	allCharacters: [],
 	characters : [],
+	alert: {status: false, name:""},
 }
 
 const rootReducer = (state = initialState, action) =>  {
@@ -70,6 +71,14 @@ const rootReducer = (state = initialState, action) =>  {
 			return {
 				...state,
 				characters: characterDeleted,
+			};
+		case  ACTIVATE_NOTIFY:
+			return{
+				...state, alert: {status: true, name: action.payload}
+			}
+		case  DESACTIVATE_NOTIFY:
+			return{
+				...state, alert: {status: false, name: ""}
 			}
 		//Caso base de default
 		default:

@@ -36,7 +36,8 @@ const getCharById = async (req, res) => {
                 name: ch.name,
                 gender: ch.gender,
                 species: ch.species,
-                origin: ch.origin?.name,
+                status: ch.status,
+                origin: ch.origin,
                 image: ch.image,
             }
             return res.status(200).json(character)
@@ -52,11 +53,6 @@ const getCharById = async (req, res) => {
 module.exports = {
     getCharById,
 }
-
-module.exports = {
-    getCharById,
-}
-
 
 
 

@@ -5,22 +5,45 @@
     width: 100%
     margin-top: 70px
     flex-direction: row
-    justify-content: flex-start
+    justify-content: space-around
     align-items: center
-    .marcador
-        color: #00FD56
-        font-size: 22px
-    .descriptionBusqueda
-        color: #fff
-        font-size: 22px
-        font-family: 'Inconsolata', monospace
-        margin-left: 15px
-    .cursor
-        width: 4px
-        height: 100%
-        margin-left: 10px
-        animation: cursor 1s infinite
-        background-color: #00FD56
+    .descripcion
+        width: 50%
+        display: flex
+        justify-content: start
+        align-items: center
+        .descriptionBusqueda
+            color: #fff
+            font-size: 22px
+            font-family: 'Inconsolata', monospace
+            margin-left: 15px
+        .marcador
+            color: #00FD56
+            font-size: 22px
+    .acciones
+        width: 100%
+        display: flex
+        justify-content: start
+        align-items: center
+        position: relative 
+        .cursor
+            display: flex
+            width: 100%
+            height: 120%
+            margin-left: 10px
+            background-color: transparent
+            box-shadow: none   
+            border: none     
+            color: white    
+            font-size: 22px
+            font-family: 'Inconsolata', monospace
+            -webkit-caret-color: #00FD56
+            caret-color: #00FD56
+            -webkit-caret-width: 10px
+            caret-width: 10px
+            &:focus
+                outline: none
+
 
 @keyframes cursor
     0%

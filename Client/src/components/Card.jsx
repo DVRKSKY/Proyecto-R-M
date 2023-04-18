@@ -1,22 +1,24 @@
 import React, { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
-import {connect} from "react-redux"
-import { addFav, removeFav } from "../redux/actions"
+import {connect, useDispatch} from "react-redux"
+import { addFav, removeFav, activateNotify, desactivateNotify } from "../redux/actions"
 import style from '.././modules/card.module.sass'
 
 function Card(props) {
-   
+   const dispatch = useDispatch()
    const [isFav, setisFav] = useState(false)
    const navigate = useNavigate()
    const handleFavorite = () => {
       if(isFav === true){
          setisFav(false)
          props.removeFav(props.id)
+         dispatch(activateNotify(`Asi que sigue vivo ${props.name}`))
+
       } else {
          setisFav(true)
          props.addFav(props)
-         
+         dispatch(activateNotify(`Haz exterminado a ${props.name}`))
       }
    }
    useEffect(() => {

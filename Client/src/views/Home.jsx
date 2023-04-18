@@ -16,14 +16,14 @@ import Deatil from '../components/Deatil'
 import Favorites from '../components/Favorites/Favorite'
 import AboutDetails from '../components/AboutDetails'
 import AtrasButton from '../components/buttons/AtrasButton'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { deleteCharacter } from '../redux/actions'
 export default function Home() {
     
     const location = useLocation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
+    const {alert} = useSelector(state => state) 
     //todo esto se va pal redux
     
    /* const [characters, setCharacter] = useState([])*/
@@ -101,6 +101,13 @@ export default function Home() {
                         <img src={pregunta} alt="Preguntas"/>
                     </div>
                 </div>
+                {
+                    alert.status ?
+                    <div className={style.notificacion}>
+                    <p className={style.text}>{alert.name}</p>
+                    </div> : null
+                
+                }
                 <div className={style.pantalla}>
                     {location.pathname === "/home" ? (
                         <>

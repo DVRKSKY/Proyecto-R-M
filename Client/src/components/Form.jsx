@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PrimaryButton from './buttons/PrimaryButton'
 
 const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -9,13 +9,14 @@ const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?])[A-Za-z\d$@
 
 export default function Form({login}) {
     const [inputs, setinputs] = useState({
-        email: '',
-        password: '',
+        email: 'henry@gmail.com',
+        password: 'A12345678o!',
     })
     const [errors, seterrors] = useState({
         email: '',
         password: '',
     })
+    const [isValid, setIsValid] = useState(false); // Nuevo estado
     function validate(inputs){
         const errors = {}
 
@@ -34,18 +35,6 @@ export default function Form({login}) {
         return errors;
     }
     
-    function handleChange(e){
-        setinputs({
-            ...inputs,
-            [e.target.name]: e.target.value
-        })
-        seterrors(
-            validate({
-                ...inputs,
-                [e.target.name]: e.target.value            
-            })
-        )
-    }
     function handleSubmit (e){
         //EVITA QUE RECARGUE LA PAGINA
         e.prevent.default()
@@ -57,8 +46,36 @@ export default function Form({login}) {
             return alert('Welcome')
         }
         return alert('Errors')
-
+        
     }
+    useEffect(() => {
+        // Al montar el componente, verifica si hay errores
+        const initialErrors = validate(inputs);
+        seterrors(initialErrors);
+    
+        // Si no hay errores, establece isValid como true
+        setIsValid(Object.keys(initialErrors).length === 0);
+      }, []);
+      function handleChange(e) {
+        setinputs({
+          ...inputs,
+          [e.target.name]: e.target.value,
+        });
+        const newErrors = validate({
+          ...inputs,
+          [e.target.name]: e.target.value,
+        });
+        seterrors(newErrors);
+        
+        // Solo actualiza isValid si hay datos en los inputs
+        if (inputs.email !== "" && inputs.password !== "") {
+          setIsValid(Object.keys(newErrors).length === 0);
+        } else {
+          setIsValid(false);
+        }
+      }
+      
+    
     return (
         <form className='sesion' onSubmit={handleSubmit}>
 
@@ -69,12 +86,11 @@ export default function Form({login}) {
             <label className='password'>Password: </label>
             <input name='password' value={inputs.password} onChange={handleChange} placeholder='Tu clave secreta'/>
             <p>{errors.password}</p>
-            {//De esta manera convertimos u objto en array y damos logica al boton
-                Object.keys(errors).length === 0 ? 
-                <Link to='/home'>
-                    <PrimaryButton tipo={'submit'} clase="primary-button" text=""/>
-                </Link> : null
-            }
+            {isValid ? (
+                <Link to="/home">
+                <PrimaryButton tipo={'submit'} clase="primary-button" text="" />
+                </Link>
+            ) : null}
             
         </form>
      )
